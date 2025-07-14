@@ -8,7 +8,8 @@ export default function UserStats() {
 
   useEffect(() => {
     fetch(`https://1393998996585844816.discordsays.com/.proxy/api/user/${id}`, {
-        method: "GET"
+        method: "GET",
+        cache: "force-cache"
     })
       .then(res => {
         if (!res.ok) throw new Error("User not found or rate limited");
