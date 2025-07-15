@@ -22,16 +22,44 @@ export default function UserStats() {
   if (error) return <p>Error: {error}</p>;
   if (!stats) return <p>Loading...</p>;
 
-  return (
-    <div>
-      <h1>Stats for User ID: {stats.user_id}</h1>
-      <ul>
-        {Object.entries(stats.stats).map(([key, value]) => (
-          <li key={key}>
-            <strong>{key.replace(/_/g, ' ')}:</strong> {value as string | number}
-          </li>
-        ))}
-      </ul>
+// messages: 1935
+// suggest points: 4
+// voice time hours: 46.45
+// voice time seconds: 167209
+    return (
+    <div className="stats-container">
+        <h1 className="stats-title">Stats for User ID: {stats.user_id}</h1>
+        <div className="stats-list">
+        <div className="stats-item">
+            <span className="stats-label">Messages:</span>
+            <span className="stats-value">{stats.stats.messages || 0}</span>
+        </div>
+        <div className="stats-item">
+            <span className="stats-label">Suggest Points:</span>
+            <span className="stats-value">{stats.stats.suggest_points || 0}</span>
+        </div>
+        <div className="stats-item">
+            <span className="stats-label">Voice Time Hours:</span>
+            <span className="stats-value">{stats.stats.voice_time_hours || 0}</span>
+        </div>
+        <div className="stats-item">
+            <span className="stats-label">Voice Time Seconds:</span>
+            <span className="stats-value">{stats.stats.voice_time_seconds || 0}</span>
+        </div>
+        <div className="stats-item">
+            <span className="stats-label">Bug Points:</span>
+            <span className="stats-value">{stats.stats.bug_points || 0}</span>
+        </div>
+        <div className="stats-item">
+            <span className="stats-label">Idea Points:</span>
+            <span className="stats-value">{stats.stats.idea_points || 0}</span>
+        </div>
+        <div className="stats-item">
+            <img className="stats-icon" src="/candy.png"/>
+            <span className="stats-label">Candies:</span>
+            <span className="stats-value">{stats.stats.candies || 0}</span>
+        </div>
+        </div>
     </div>
-  );
+    );
 }
